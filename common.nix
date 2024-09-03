@@ -87,8 +87,8 @@ in
       interfaces = ["wlan0"];
       # ! Change the following to connect to your own network
       networks = {
-        "ytvid-rpi" = { # SSID
-          psk = "ytvid-rpi"; # password
+        "" = { # SSID
+          psk = ""; # password
         };
       };
     };
@@ -103,15 +103,15 @@ in
   services.timesyncd.enable = true;
 
   # ! Change the following configuration
-  users.users.chrism = {
+  users.users.gigi = {
     isNormalUser = true;
-    home = "/home/chrism";
-    description = "Chris McDonough";
+    home = "/home/gigi";
+    description = "GiGi Hurtault";
     extraGroups = ["wheel" "networkmanager" "gpio" "audio"];
     # ! Be sure to put your own public key here
     openssh = {
       authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOLXUsGqUIEMfcXoIiiItmGNqOucJjx5D6ZEE3KgLKYV ednesia"
+        # "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOLXUsGqUIEMfcXoIiiItmGNqOucJjx5D6ZEE3KgLKYV ednesia"
       ];
     };
   };
@@ -127,9 +127,7 @@ in
   environment.systemPackages = with pkgs; [
     libraspberrypi
     raspberrypi-eeprom
-    htop
     vim
-    emacs
     ripgrep
     btop
     python_with_packages
@@ -146,6 +144,9 @@ in
     ethtool
     minicom
     bluez
+    # Server packages
+    code-server
+    tailscale
   ];
 
 
